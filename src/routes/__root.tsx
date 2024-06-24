@@ -1,13 +1,9 @@
-import React from 'react';
-import {
-    createRootRoute,
-    Link,
-    Outlet,
-} from '@tanstack/react-router';
+import { Link, Outlet, createRootRoute } from '@tanstack/react-router';
 import { TanStackRouterDevtools } from '@tanstack/router-devtools';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { ModeToggle } from '@components/ui/mode-toggle';
-import { useTranslation } from 'react-i18next';
 
 const Navbar = () => {
     const { t } = useTranslation();

@@ -1,9 +1,9 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { RouterProvider, createRouter } from '@tanstack/react-router';
 
-import { Toaster } from '@components/ui/toaster';
-
 import { routeTree } from '../routeTree.gen';
-import { ThemeProvider } from '@components/ui/theme-provider';
+
+import { ThemeProvider, Toaster } from '@components/ui';
 
 const router = createRouter({ routeTree });
 
@@ -13,12 +13,16 @@ declare module '@tanstack/react-router' {
     }
 }
 
+const queryClient = new QueryClient();
+
 const App = () => {
     return (
-        <ThemeProvider defaultTheme='dark' storageKey='vite-ui-theme'>
-            <RouterProvider router={router} />
-            <Toaster />
-        </ThemeProvider>
+        <QueryClientProvider client={queryClient}>
+            <ThemeProvider defaultTheme='dark' storageKey='vite-ui-theme'>
+                <RouterProvider router={router} />
+                <Toaster />
+            </ThemeProvider>
+        </QueryClientProvider>
     );
 };
 
